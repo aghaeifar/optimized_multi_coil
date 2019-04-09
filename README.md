@@ -1,2 +1,2 @@
 # optimized_multi_coil
-Optimization of multi-coil shim setup for specified targets 
+Optimization of coils arrangment in a multi-coil shim setup for human brain shiming
