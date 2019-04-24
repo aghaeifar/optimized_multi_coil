@@ -30,11 +30,11 @@ profile  = opt_profile_manager('shim_mode', {'global'},...              % Skope 
 Modify `opt_profile_manager.m` to change the optimization constraints. Boundries for coil size, position, cylinder size, and many others are in `opt_profile_manager.m` 
 
 ## Is it slow?
-The program comprises a lot of computations. Although the magnetic field for individual coils are computed in parallel, it may take several hours or days to complete. Here are a few tips for you:
-- Crop your B0 maps as much as possible. 
+The program comprises a lot of computations. Although the magnetic field for individual coils are computed in parallel, it may take several hours or days to complete the optimization. Here are some tips for you:
+- Remove everything outside of the brain by cropping your B0 maps. 
 - You can replace the matlab code for simulation of Biot-savart law with the following mex file (4x faster)
 https://github.com/Aghaeifar/Biot-Savart-Matlab-mex
-- If you want to force the program to stop, simply go to the destination folder, create stop.txt and write 1 in the file. The program checks this file every 10 iterations. The program will stop and save the results up to the current iteration if the file exists and contains 1. 
+- If you want to force the program to stop, simply go to the destination folder, create `stop.txt` and write `1` in the file. The program checks this file every 10 iterations and will stop and save the results up to the current iteration if the file exists and contains 1. 
 
 # Contact me
 Do you have questions or want to report a bug? Is there any suggestions? Just write me:
