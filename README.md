@@ -14,9 +14,9 @@ Use `opt_profile_manager.m` to configure the optimization. For an example:
 ```
 profile  = opt_profile_manager('shim_mode', {'global'},...              % Skope of optimization, global or slice-wise
                                'shim_algo_inner', {'pinv'},...          % The algorithm used for calculation of shim currents; 'pinv' for unconstrained shimming and 'lsqlin' for constrained shimming
-                               'shim_algo_outer', {'sqp'},...		    % The solver used for optimization of coils' position and size
+                               'shim_algo_outer', {'sqp'},...		% The solver used for optimization of coils' position and size
                                'coilShape', {'square'}, ...             % Shape of the coils, 'square' or 'circle' 
-                               'nonlconCoef', [0],...				    % Nonlinear constraint weight. Here is the coils overlapping. 
+                               'nonlconCoef', [0],...				% Nonlinear constraint weight. Here is the coils overlapping. 
                                'shimDCL', [true],...                    % Adjust coil's current based on the coil's size.          
                                'coil_no_row', [32,4,30], ...            % Initial coils arrangment, [number of coils, number of rows, size of the coils]
                                'prefix', 'Unconstrained_CoilSize30');   % A prefix for the name of destination folder (results will be saved there)
