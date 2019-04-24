@@ -29,6 +29,11 @@ profile  = opt_profile_manager('shim_mode', {'global'},...              % Skope 
 ```
 Modify `opt_profile_manager.m` to change the optimization constraints. Boundries for coil size, position, cylinder size, and many others are in `opt_profile_manager.m` 
 
+## Results
+The result will be stored in destination folder at the end of the optimization. The destination folder is located in `.\profiles\opt_results\name_of_folder`. There will be two files: `opt_progress.mat` and `opt_results.mat`.
+`opt_progress.mat` contains some information about progress of the optimization in different iterations. 
+`opt_results.mat` contains initial and final coils position & size and configuration parameters.
+
 ## Is it slow?
 The program comprises a lot of computations. Although the magnetic field for individual coils are computed in parallel, it may take several hours or days to complete the optimization. Here are some tips for you:
 - Remove everything outside of the brain by cropping your B0 maps. 
