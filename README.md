@@ -7,7 +7,8 @@ Matlab with the following toolboxes
 * distrib_computing_toolbox
 ## Train Data
 Copy your train data into `.\brain_B0maps\train`. Check structure of the example train data and adapt your B0 maps accordingly. All the B0 maps in the train folder must have a same FoV and resolution. The name of the variable contains B0 map must be `brain`. 
-The structure of train data is a following:
+
+The structure of train data is:
 ```
 * brain.b0map : 3D B0 map of brain (unit: Hz)
 * brain.mask  : a mask to exclude everything outside brain. non ROI must be filled with nan (not with zero)
@@ -31,7 +32,9 @@ Modify `opt_profile_manager.m` to change the optimization constraints. Boundries
 
 ## Results
 The result will be stored in destination folder at the end of the optimization. The destination folder is located in `.\profiles\opt_results\name_of_folder`. There will be two files: `opt_progress.mat` and `opt_results.mat`.
+
 `opt_progress.mat` contains some information about progress of the optimization in different iterations. 
+
 `opt_results.mat` contains initial and final coils position & size and configuration parameters.
 
 ## Is it slow?
