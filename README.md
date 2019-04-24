@@ -36,7 +36,7 @@ The program comprises a lot of computations. Although the magnetic field for ind
 https://github.com/Aghaeifar/Biot-Savart-Matlab-mex
 - If you want to force the program to stop, simply go to the destination folder, create stop.txt and write 1 in the file. The program checks this file every 10 iterations. The program will stop and save the results up to the current iteration if the file exists and contains 1. 
 
-## Contact me
+# Contact me
 Do you have questions or want to report a bug? Is there any suggestions? Just write me:
 Ali Aghaeifar <ali.aghaeifar[at]tuebingen.mpg.de>
 
