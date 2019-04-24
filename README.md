@@ -1,4 +1,10 @@
 # Usage Instruction
+This code optimize size and position of individual coils to improve shimming capability of a multi-coil shim setup.
+## Requirements:
+Matlab with the following toolboxes 
+* optimization_toolbox
+* statistics_toolbox
+* distrib_computing_toolbox
 ## Train Data
 Copy your train data into `.\brain_B0maps\train`. Check structure of the example train data and adapt your B0 maps accordingly. All the B0 maps in the train folder must have a same FoV and resolution. The name of the variable contains B0 map must be `brain`. 
 The structure of train data is a following:
@@ -21,26 +27,19 @@ profile  = opt_profile_manager('shim_mode', {'global'},...              % Skope 
                                'coil_no_row', [32,4,30], ...            % Initial coils arrangment, [number of coils, number of rows, size of the coils]
                                'prefix', 'Unconstrained_CoilSize30');   % A prefix for the name of destination folder (results will be saved there)
 ```
-To change the optimization constraints, modify `opt_profile_manager.m`. Boundries for coil size, position, cylinder sizem, and many others are in `opt_profile_manager.m` 
+Modify `opt_profile_manager.m` to change the optimization constraints. Boundries for coil size, position, cylinder size, and many others are in `opt_profile_manager.m` 
 
-
-Optimization of coils arrangment & size in a multi-coil shim setup.
-
-
-User can define the initial positions of the coils (normally a symmetric arrangment).  
-
-
-
-You can replace the matlab code for simulation of Biot-savart law with the following mex file (4x faster)
+## Is it slow?
+The program comprises a lot of computations. Although the magnetic field for individual coils are computed in parallel, it may take several hours or days to complete. Here are a few tips for you:
+- Crop your B0 maps as much as possible. 
+- You can replace the matlab code for simulation of Biot-savart law with the following mex file (4x faster)
 https://github.com/Aghaeifar/Biot-Savart-Matlab-mex
+- If you want to force the program to stop, simply go to the destination folder, create stop.txt and write 1 in the file. The program checks this file every 10 iterations. The program will stop and save the results up to the current iteration if the file exists and contains 1. 
 
-Questions, bug reports, and suggestions are welcome.  Please contact:
+## Contact me
+Do you have questions or want to report a bug? Is there any suggestions? Just write me:
 Ali Aghaeifar <ali.aghaeifar[at]tuebingen.mpg.de>
 
 
-# Requirements:
-Matlab with the following toolboxes 
-* optimization_toolbox
-* statistics_toolbox
-* distrib_computing_toolbox
+
 
