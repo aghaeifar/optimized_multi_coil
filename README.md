@@ -21,6 +21,7 @@ profile  = opt_profile_manager('shim_mode', {'global'},...              % Skope 
                                'coil_no_row', [32,4,30], ...            % Initial coils arrangment, [number of coils, number of rows, size of the coils]
                                'prefix', 'Unconstrained_CoilSize30');   % A prefix for the name of destination folder (results will be saved there)
 ```
+To change the optimization constraints, modify `opt_profile_manager.m`. Boundries for coil size, position, cylinder sizem, and many others are in `opt_profile_manager.m` 
 
 
 Optimization of coils arrangment & size in a multi-coil shim setup.
