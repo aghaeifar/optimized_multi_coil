@@ -12,14 +12,15 @@ function [c, ceq] = opt_circlecon(x, param)
     sRcoil  = bsxfun(@plus,rCoil, rCoil');
     
     if strcmp(param.coilShape, 'square')
-        D = max(sRcoil - dZ, sRcoil - param.cylnR*dTheta); % Maximum of overlap in vertical and horizontal direction
+        D = 2*sRcoil.^2 - (dZ.^2 + (param.cylnR*dTheta).^2); % max(sRcoil - dZ, sRcoil - param.cylnR*dTheta); % Maximum of overlap in vertical and horizontal direction      
     else % we have circular coils
         D = sRcoil.^2 - (dZ.^2 + (param.cylnR*dTheta).^2); % D shows how much two circles overlapped 
     end 
 
     idx = 1==eye(param.coilN);
-    D(idx) = -inf;  
+    D(idx) = -inf; % diagonal elements  
+    D(D<0) = 0;
     
-    c = max(D, [], 2);    
+    c = sum(D(:))/2; %max(D, [], 2);    
     ceq     = [];
 end

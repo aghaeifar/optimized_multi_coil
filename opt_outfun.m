@@ -21,8 +21,8 @@ function stop = opt_outfun(x, optimValues, state, param)
                 progress.shim_std  = [progress.shim_std, data_outfuns.shim_std];
             end
             
-            % sometime the optimization progress gets boring and needs to be terminated manually, create stop.txt in the target folder and type 1 into the file.
-            % the program check stop.txt every 50 iterations
+            % sometime the optimization progress becomes boring and needs to be terminated manually, create stop.txt in the target folder and type 1 into the file.
+            % the program check stop.txt every 10 iterations
             if mod(optimValues.iteration, 10) == 0
                 myManualStop = fullfile(param.savePath, 'stop.txt');
                 if exist(myManualStop, 'file') == 2
@@ -36,7 +36,7 @@ function stop = opt_outfun(x, optimValues, state, param)
             end
         end
         
-        prn_prg(optimValues, state, param, progress);
+%         prn_prg(optimValues, state, param, progress);
         
         if isequal(state, 'done') % The algorithm is in the final state after the last iteration
             disp('Saving simulation results');

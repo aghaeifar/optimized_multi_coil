@@ -10,9 +10,9 @@ function err = opt_core(x, brain_B0map, param, fov)%(coilPos, rCyln, param)
 
     fov_grids = [fov.fov_x(:), fov.fov_y(:), fov.fov_z(:)];
     b1_z    = zeros(param.coilN, size(fov_grids,1));
-    parfor i=1:param.coilN
+    parfor i=1:param.coilN % parfor
         current = conv2bs_sim_format(coilpos{i});
-        b1_z(i,:) = b1sim(current, fov_grids) * 42.57e6 * param.coilTurn; % you can use the mex file for faster calculation 
+        b1_z(i,:) = b1sim_mex(current, fov_grids) * 42.57e6 * param.coilTurn; % b1sim_mex
     end
     b1_z = reshape(b1_z, [param.coilN, fov.fov_size]);
     if param.shimDCL % is dynamic current limitation enabled
@@ -22,6 +22,7 @@ function err = opt_core(x, brain_B0map, param, fov)%(coilPos, rCyln, param)
     
     if rank(reshape(b1_z, param.coilN, [])) ~= param.coilN
         disp('Not a full rank matrix');
+%         x
     end
     % parfor is not efficient here due to huge data transfering to workers which
     % makes the overall run-time longer (even in local)  
@@ -37,9 +38,9 @@ function err = opt_core(x, brain_B0map, param, fov)%(coilPos, rCyln, param)
     assignin('base', 'data_outfuns', data_outfuns); % export to workspace to share with opt_outfun
     overlap = 0;
     if param.nonlconCoef > 0
-        overlap = param.nonlconCoef*sum(opt_circlecon(x, param));
+        overlap = param.nonlconCoef * opt_circlecon(x, param);
     end
-    err = sum(shim_err(:)) + overlap; % second part is nonlcon
+    err = sum(shim_err(:)) + overlap; % second part is nonlcon    
     %err = nanstd(shim_error);
 end
 
