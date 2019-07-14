@@ -20,13 +20,13 @@ The structure of train data is:
 Use `opt_profile_manager.m` to configure the optimization. For an example:
 ```
 profile  = opt_profile_manager('shim_mode', 'global',...              % Scope of optimization, global or slice-wise
-					   'shim_algo_inner', 'pinv',...          % The algorithm used for calculation of shim currents; 'pinv' for unconstrained shimming and 'lsqlin' for constrained shimming
-					   'shim_algo_outer', 'sqp',...		% The solver used for optimization of coils' position and size
-					   'coil_shape', 'square', ...             % Shape of the coils, 'square' or 'circle' 
-					   'overlapping_coef', 0,...			% Nonlinear constraint weight. Here is the coils overlapping. 
-					   'dynammic_current_bound', true,...                    % Adjust coil's current based on the coil's size.          
-					   'coil_no_row_rad', [32,4,30], ...            % Initial coils arrangment, [number of coils, number of rows, size of the coils]
-					   'prefix', 'Unconstrained_CoilSize30');   % A prefix for the name of destination folder (results will be saved there)
+					'shim_algo_inner', 'pinv',...          % The algorithm used for calculation of shim currents; 'pinv' for unconstrained shimming and 'lsqlin' for constrained shimming
+					'shim_algo_outer', 'sqp',...		% The solver used for optimization of coils' position and size
+					'coil_shape', 'square', ...             % Shape of the coils, 'square' or 'circle' 
+					'overlapping_coef', 0,...			% Nonlinear constraint weight. Here is the coils overlapping. 
+					'dynammic_current_bound', true,...                    % Adjust coil's current based on the coil's size.          
+					'coil_no_row_rad', [32,4,30], ...            % Initial coils arrangment, [number of coils, number of rows, size of the coils]
+					'prefix', 'Unconstrained_CoilSize30');   % A prefix for the name of destination folder (results will be saved there)
                                
 ```
 Modify `opt_profile_manager.m` to change the optimization constraints. Boundries for coil size, position, cylinder size, and many others are in `opt_profile_manager.m` 
