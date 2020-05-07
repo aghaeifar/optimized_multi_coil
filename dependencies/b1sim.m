@@ -37,7 +37,7 @@ for i=1:length(current)
 
 end;
 
-B=fz/1e7;
+B=fz/1e4;
 
 return;
 
