@@ -1,5 +1,10 @@
 # Usage Instruction
 This code optimize size and position of individual coils to improve shimming capability of a multi-coil shim setup.
+
+
+![alt text](https://github.com/aghaeifar/optimized_multi_coil/blob/master/coilPos.jpg?raw=true)
+
+
 ## Requirements:
 Matlab with the following toolboxes 
 * optimization_toolbox
