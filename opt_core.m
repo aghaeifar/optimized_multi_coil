@@ -12,7 +12,7 @@ function err = opt_core(x, brain_B0map, param, fov)%(coilPos, rCyln, param)
     b1_z    = zeros(param.coilN, size(fov_grids,1));
     parfor i=1:param.coilN % parfor
         current = conv2bs_sim_format(coilpos{i});
-        b1_z(i,:) = b1sim_mex(current, fov_grids) * 42.57e6 * param.coilTurn; % b1sim_mex
+        b1_z(i,:) = b1sim(current, fov_grids) * 42.57e6 * param.coilTurn; % you can use the mex file for faster calculation  % b1sim_mex
     end
     b1_z = reshape(b1_z, [param.coilN, fov.fov_size]);
     if param.shimDCL % is dynamic current limitation enabled
